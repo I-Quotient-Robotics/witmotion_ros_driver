@@ -1,6 +1,8 @@
 # WitMotion IMU ROS2 Driver
 
-目前该ROS2包仅包含适用于HWT6052-485的驱动。原理为使用serial-driver提供的串口收发Topic，通过`serial_write`Topic发送modbus请求，然后通过`serial_read`获取串口返回的结果，并根据ModbusID，数据帧长度来对不同的modbus请求进行区分，进而获取到想要的数据。
+目前该ROS2包仅包含适用于HWT6052-485的驱动。
+
+原理为使用serial-driver提供的串口收发Topic，通过`serial_write`Topic发送modbus请求，然后通过`serial_read`获取串口返回的结果，并根据ModbusID，数据帧长度来对不同的modbus请求进行区分，进而获取到想要的数据。
 
 ## Known Issues
 
@@ -8,35 +10,35 @@
 
 ## Howto
 
-Clone source to your ros2 workspace
+1. Clone source to your ros2 workspace
 
-```bash
-mkdir -p ~/ros2_ws/src
-cd ~/ros2_ws/src
-git clone https://e.coding.net/iqr/sensor/witmotion_ros_driver.git
-```
+    ```bash
+    mkdir -p ~/ros2_ws/src
+    cd ~/ros2_ws/src
+    git clone https://e.coding.net/iqr/sensor/witmotion_ros_driver.git
+    ```
 
-Build
+2. Build
 
-```bash
-cd ~/ros2_ws
-colcon build --symlink-install
-```
+    ```bash
+    cd ~/ros2_ws
+    colcon build --symlink-install
+    ```
 
-Use
+3. Use
 
-```bash
-# 串口转发节点
-ros2 launch witmotion_ros_driver serial_bridge.launch.py
+    ```bash
+    # 串口转发节点
+    ros2 launch witmotion_ros_driver serial_bridge.launch.py
 
-# ModbusRTU协议的IMU的节点
-ros2 launch witmotion_ros_driver modbus_rtu_driver.launch.py
-```
+    # ModbusRTU协议的IMU的节点
+    ros2 launch witmotion_ros_driver modbus_rtu_driver.launch.py
+    ```
 
 ## Param
 
-- config/serial.params.yaml
-    - 用途：该文件为串口的设置参数
+- config/params.yaml
+    - 用途：该文件为串口和IMU驱动的配置参数文件
 
 ## Nodes
 

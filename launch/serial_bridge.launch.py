@@ -37,7 +37,7 @@ def generate_launch_description():
     params_declare = DeclareLaunchArgument(
         'params_file',
         default_value=os.path.join(
-            share_dir, 'config', 'serial.params.yaml'),
+            share_dir, 'config', 'params.yaml'),
         description='File path to the ROS2 parameters file to use'
     )
 
